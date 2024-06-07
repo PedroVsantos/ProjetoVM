@@ -1,0 +1,362 @@
+/* ---------------GLOBAL------------------*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* background-color: #F7E5CF; */
+    /* background-color: #0044ff;  */
+    /* background-image: url(img/MuseuFundo.jpg); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(img/MuseuFundo.jpg);
+    width: 100%;
+    height: 1000px;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.DivGeralgraficos {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    height: 400px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+
+.graficoFundo {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+
+
+.divDeLadinho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+/*_________________GLOBAL________________*/
+
+/* ---------------FONTES-----------------*/
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/*_________________FONTES________________*/
+
+
+/* ---------------NAVBAR-----------------*/
+.ulNavBarPrincipal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Montserrat";
+    background-color: #D1B898;
+    border: none;
+}
+
+.ulNavBarPrincipal .divNavBar {
+    font-family: "Montserrat";
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+}
+
+.ulNavBarPrincipal .divImgLogo img {
+    height: 60px;
+
+}
+
+.ulNavBarPrincipal .divBotao .ulBotao li {
+    float: left;
+    list-style-type: none;
+}
+
+.ulNavBarPrincipal .divBotao .ulBotao li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.ulNavBarPrincipal .divBotao .ulBotao li a:hover {
+    background-color: #ddd;
+}
+
+
+/*_________________NAVBAR_______________*/
+
+
+/*------------------------NavBartexte------------------------*/
+
+
+/*_________________________NavBar______________________________*/
+
+
+/*------------------------1Parte-Do-Site-----------------------------*/
+.masterVisualGeral {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.divPainelUmidade {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.divVisualGeral {
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    width: 50vw;
+    height: 100vh;
+}
+
+.divVisualGeral h4 {
+    font-family: sans-serif;
+
+}
+
+.divVisualGeral p {
+    font-family: sans-serif;
+}
+
+.divSecoes {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    width: 540px;
+    height: 410px;
+    background-color: rgb(0, 0, 0, 0.8);
+    border-radius: 6px;
+    justify-content: center;
+    border: white;
+    color: white;
+    border: 2px solid;
+    align-items: center;
+    margin-top: 59px;
+}
+
+.divSecoes p {
+    font-size: 16px;
+}
+
+.divSecoes h4 {
+    font-size: 20px;
+}
+
+.textoChamado {
+    text-align: justify;
+    height: 150px;
+}
+
+.tituloChamado {
+    height: 35px;
+    /* border-bottom: 1px solid white;  */
+}
+
+hr{
+    width: 100%;
+    /* height: 30px; */
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.conteudoChamado {
+    width: 80%;
+}
+
+.divSecao2 {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    width: 620px;
+    height: 600px;
+    background-color: rgb(0, 0, 0, 0.8);
+    border-radius: 6px;
+    /* justify-content: center; */
+    border: white;
+    color: white;
+    border: 2px solid;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 140px;
+}
+
+.divSecao2 button{
+    width: 125px;
+    height: 32px;
+    background-color: #6f583c;
+    color: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.conteudoBob {
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.conteudoBob p{
+  margin-top: 20px;
+}
+
+.conteudoPergunta{
+    text-align: center;
+    display: flex;
+    height: 207px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.repostaBob {
+    background-color: #D1B898;
+    display: flex;
+    flex-direction: column;
+    width: 528px;
+    height: 170%;
+    color: black;
+    font-weight: bold;
+    justify-content: center;
+    border: 2px solid white;
+    font-size: 12px;
+}
+
+.conteudoResposta{
+    text-align: center;
+}
+
+.perguntaBob{
+    border: 2px solid white;
+    width: 435px;
+    height: 150px;
+}
+
+.divAdicionarFundo {
+    display: flex;
+    justify-content: center;
+}
+
+.divAdicionarSecao {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 500px;
+    height: 100px;
+    background-color: #00000050;
+    border-color: #FFFFFF;
+    border-radius: 5px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.divAdicionarSecao .inputSecao {
+    width: 250px;
+    height: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: #000000;
+
+}
+
+.divAdicionarSecao h4 {
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+.divAdicionarSecao .botaoAdicionar {
+    width: 80px;
+    height: 20px;
+    background-color: #F3E0C7;
+    margin-top: 20px;
+    /* border: #000000; */
+}
+
+/*_________________________1Parte-Do-Site______________________________*/
+
+/*------------------------FOOTER------------------------*/
+.divFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: #D1B898;
+    width: 100%;
+    bottom: 0%;
+    left: 0%;
+}
+
+.divCard1 {
+    display: flex;
+    border-right: solid 2px #43020B;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.divCard2 {
+    display: flex;
+    border-right: solid 2px #43020B;
+    flex-direction: row;
+    width: 30%;
+    height: 160px;
+    font-family: "Montserrat";
+    justify-content: center;
+    align-items: center;
+}
+
+.divCard2Aux {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 10px;
+}
+
+.divCard3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 10px;
+    width: 30%;
+    align-content: start;
+
+}
+
+.imgLogoFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/*_________________________FOOTER______________________________*/

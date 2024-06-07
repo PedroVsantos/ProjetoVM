@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="stylePiLC.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="img">
+    </div>
+    <div>
+
+        <div id="div_pai" style="display: block;" class="imgagemBackGro">
+            <div class="ConteinerTotal">
+                <img class="imglogo" src="Emblema-removebg-preview.png" alt="">
+                <H1 class="titulo">CADASTRO</H1>
+                <div class="dibInput">
+                    <input id="ipt_nome" type="text" placeholder="Nome">
+                    <input id="ipt_email" type="text" placeholder="Email">
+                    <input id="ipt_senha" type="password" placeholder="Senha">
+                    <input id="ipt_confirmSenha" type="password" placeholder="Confirmar senha">
+                </div>
+                <div class="div_botton">
+                    <button onclick="botton1()" class="botton_v">Voltar</button>
+                    <button onclick="proximo()" class="botton">Próximo</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_filho2" style="display: none;" class="imgagemBackGro">
+            <div class="ConteinerTotal">
+                <img class="imglogo" src="Emblema-removebg-preview.png" alt="">
+                <H1 class="titulo">CADASTRO MUSEU</H1>
+                <div class="dibInput">
+                    <input id="ipt_nomeM" type="text" placeholder="Nome Museu">
+                    <input id="ipt_cep" type="text" placeholder="Cep">
+                    <input id="ipt_num" type="text" placeholder="Número">
+                    <input id="ipt_complemento" type="text" placeholder="Complemento">
+                    <input id="ipt_cnpj" type="text" placeholder="CNPJ">
+                </div>
+                <div class="div_botton">
+                    <button onclick="botton2()" class="botton_v">Voltar</button>
+                    <button onclick="cadastrar()" class="botton">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_filho" style="display: none;" class="imgagemBackGro">
+            <div class="ConteinerTotal">
+                <img class="imglogo" src="Emblema-removebg-preview.png" alt="">
+                <H1 class="titulo">LOGIN</H1>
+                <div class="dibInput">
+                    <input id="ipt_emailL" type="text" placeholder="Email">
+                    <input id="ipt_senhaL" type="password" placeholder="Senha">
+                </div>
+                <div class="div_botton2">
+                    <button onclick="login()" class="botton2">Continuar</button>
+                    <!-- <p class="senha">Esqueceu a Senha?</p> -->
+                </div>
+            </div>
+        </div>
+
+        <div id="div_filho3" style="display: none;" class="imgagemBackGro">
+            <div class="ConteinerTotal">
+                <img class="imglogo" src="Emblema-removebg-preview.png" alt="">
+                <H1 class="titulo">funfou</H1>
+                <div class="dibInput">
+                    <input id="ipt_emailL1" type="text" placeholder="funfou">
+                    <input id="ipt_senhaL1" type="password" placeholder="funfou">
+                </div>
+                <div class="div_botton">
+                    <button onclick="login()" class="botton">Continuar</button>
+                    <!-- <p class="senha">Esqueceu a Senha?</p> -->
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
+<script>
+    var emailCadastro;
+    var senhaCadastro;
+
+    function proximo() {
+        var nome = ipt_nome.value;
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+        var confirmSenha = ipt_confirmSenha.value;
+
+        if (email.indexOf('@') == -1 || email.indexOf('.com') == -1) {
+            alert("Email Inválido");
+        }
+        else if (nome == "") {
+            alert("Preencha o campo nome");
+        }
+        else if (senha.length < 8) {
+            alert("Senha deve conter no minímo 8 caracteres");
+        }
+        else if (confirmSenha == "") {
+            alert("Confirme a senha");
+        }
+        else if (senha !== confirmSenha) {
+            alert("Senha diferente da anterior!");
+        }
+
+        else {
+            emailCadastro = email;
+            senhaCadastro = senha;
+
+            div_pai.style.display = "none";
+            div_filho.style.display = "none";
+            div_filho2.style.display = "block";
+        }
+
+    }
+
+    function cadastrar() {
+        var nomeMuseu = ipt_nomeM.value;
+        var cep = ipt_cep.value;
+        var numero = ipt_num.value;
+        var Complemento = ipt_complemento.value;
+        var cnpj = ipt_cnpj.value;
+
+        if (nomeMuseu == "") {
+            alert("Preencha o campo com o nome do museu!");
+        }
+        else if (cep.length != 8) {
+            alert("Cep deve conter 8 caracteres");
+        }
+        else if (numero == "") {
+            alert("Preencha o campo com o número do endereço");
+        }
+        else if (cnpj.length != 14) {
+            alert("CNPJ Inválido");
+        }
+        else {
+            div_pai.style.display = "none";
+            div_filho.style.display = "block";
+            div_filho2.style.display = "none";
+        }
+    }
+
+    function login() {
+        var emailL = ipt_emailL.value;
+        var senhaL = ipt_senhaL.value;
+
+        // if (emailL.indexOf('@') == -1 || emailL.indexOf('.com') == -1) {
+        //     alert("Email Inválido");
+        // }
+        // if (senhaL.length < 8) {
+        //     alert("Senha deve conter no minímo 8 caracteres");
+        // }
+        if (emailL != emailCadastro && senhaL != senhaCadastro) {
+            alert("Email ou senha incorretos!");
+        }
+        else {
+            div_pai.style.display = "none";
+            div_filho.style.display = "none";
+            div_filho2.style.display = "none";
+            div_filho3.style.display = "block";
+
+        }
+    }
+
+    function botton1() {
+        div_pai.style.display = "block";
+        div_filho.style.display = "none";
+        div_filho2.style.display = "none";
+        div_filho3.style.display = "none";
+    }
+    function botton2() {
+        div_pai.style.display = "block";
+        div_filho.style.display = "none";
+        div_filho2.style.display = "none";
+        div_filho3.style.display = "none";
+    }
+</script>

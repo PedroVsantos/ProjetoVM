@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <ul class="ulHeader">
+        <div class="divHeader">
+            <div class="imgLogo">
+                <li> <img src="assets/imgs/imgLogo.png" alt=""> </li>
+            </div>
+            <div class="divBotoes">
+                <ul class="ulHeader">
+                    <li><a href="#SobreNos">SOBRE NÓS</a></li>
+                    <li><a href="#Solucao">SOLUÇÃO</a></li>
+                    <li><a href="#FaleConosco">FALE CONOSCO</a></li>
+                    <li><a href="#Caculadora">CALCULADORA</a></li>
+                    <li><a href="login.html">PERFIL</a></li>
+                </ul>
+            </div>
+        </div>
+    </ul>
+
+    <section id="AMW">
+        <div class="divAMWPrincipal">
+            <h1>AMW</h1>
+        </div>
+    </section>
+
+    <section id="SobreNos">
+        <div class="divSobreNos">
+            <div class="divTextoSobreNos">
+                <h1>ART MONITORING WATERPROFING</h1>
+                <p>A AMW Art Monitoring Waterproofing é uma empresa especializada em proteger tesouros artísticos em
+                    museus e galerias. Eles oferecem soluções personalizadas para cada cliente, desde a instalação
+                    inicial até o treinamento dos usuários, garantindo um monitoramento eficaz e adaptado às
+                    necessidades específicas de cada espaço cultural.</p>
+            </div>
+            <div class="divImgSobreNos">
+                <img src="assets/imgs/ImgSobreNos.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <div class="divUp">
+        <h2>Preservando a beleza, controlando a umidade.</h2>
+    </div>
+    <section id="Solucao">
+        <div class="divSolucao">
+            <h1>SOLUÇÃO</h1>
+            <p>Nossos sensores de umidade são a base de nosso sistema de monitoramento. Cada um deles é projetado para
+                fornecer leituras precisas e em tempo real, permitindo que clientes ajam rapidamente para resolver
+                quaisquer problemas potenciais. Seja em uma galeria movimentada em São Paulo ou em um museu remoto na
+                Amazônia, nossos sistemas garantem um monitoramento precioso sobre as obras e artefatos.</p>
+        </div>
+    </section>
+    <section id="FaleConosco">
+        <div class="divFaleConosco">
+            <h1>ENTRE EM CONTATO</h1>
+            <div class="divFCQuadradoMarron">
+                <input type="text" id="input_nome" placeholder="Nome Completo">
+                <input type="text" id="input_email" placeholder="E-mail">
+                <input type="text" id="input_telefone" placeholder="Telefone">
+                <textarea name="message" id="input_dgt" placeholder="Digite sua mensagem..." required></textarea>
+                <button>Enviar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="Caculadora">
+
+        <div class="divFundoCalculadora">
+            <div class="divFundoCalculadoraAux">
+                <div class="divCalculadorPrincipal">
+                    <div class="divTextoSM">
+                        <h1>SIMULADOR FINANCEIRO</h1>
+                        <p>Dentre os dez principais fatores de risco às obras de arte em museus ou galerias de arte,
+                            a umidade encontra-se diretamente ligado a quatro deles. Os fatores são: Degradação por
+                            Umidade e Maresia Falta de controle de temperatura e Umidade Vazamentos e Inundações Pragas
+                            em Obras de Arte (Mofo)
+                        </p>
+                    </div>
+                    <div class="divCALQuadradoMarron">
+                        <div class="cardcalc" id="cardcalc">
+                            <div id="divSome">
+                                <img class="imglogoSM" src="assets/imgs/imgLogo.png" alt="">
+
+                                <div class="DivInputCal">
+                                    <input type="text" placeholder="Nome" id="input_nomeCalculadora">
+                                </div>
+                                <div class="DivInputCal">
+                                    <input type="text" placeholder="Quantidade de Obras" id="input_quantidadeobras">
+                                </div>
+                                <div class="DivInputCal">
+                                    <input type="text" placeholder="Custo Médio das Obras" id="input_custoMedio">
+                                </div>
+                                <div class="DivSelectCal">
+                                    <select id="input_estacao">
+                                        <option value="#" selected disabled>Escolha a estação do ano</option>
+                                        <option value="primavera">Primavera</option>
+                                        <option value="verão">Verão</option>
+                                        <option value="outono">Outono</option>
+                                        <option value="inverno">Inverno</option>
+                                    </select>
+                                </div>
+                                <div class="DivSelectCal">
+                                    <select id="input_regiao">
+                                        <option value="#" selected disabled>Qual Regiao esta o local do seu
+                                            Museus/Galeria</option>
+                                        <option value="norte">Norte</option>
+                                        <option value="nordeste">Nordeste</option>
+                                        <option value="centro-oeste">Centro-oeste</option>
+                                        <option value="sudeste">Sudeste</option>
+                                        <option value="sul">Sul</option>
+                                    </select>
+                                </div>
+                                <button onclick="analisar()" class="btn-calc">Ver Economia</button>
+                            </div>
+                        </div>
+                        <div id="div_msg"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="divFooter">
+            <div class="divCard1">
+                <img class="imgLogoFooter" src="assets/imgs/imgLogo.png" alt="">
+                <h1>AMW</h1>
+            </div>
+            <div class="divCard2">
+                <div class="divCard2Aux">
+                    <h2><a href="#SobreNos">SOBRE NÓS</a></h2><br>
+                    <H2><a href="#Solucao">SOLUÇÃO</a></H2>
+                </div>
+                <div class="divCard2Aux">
+                    <h2><a href="#FaleConosco">CALCULADORA</a></h2><br>
+                    <H2><a href="#Caculadora">FALE CONOSCO</a></H2>
+                </div>
+            </div>
+            <div class="divCard3">
+                <h2>Contato</h2>
+                <h3>(+55 11)46309050</h3>
+                <h2>E-mail</h2>
+                <h3>amw.sprint2@sptech.school</h3>
+                <h2>Endereço</h2>
+                <h3>Rua Haddock Lobo, 595 - São Paulo - SP, 01414-001</h3>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+<script>
+
+
+    function analisar() { 
+        var quantidadeobras = Number(input_quantidadeobras.value);
+        var custoMedio = Number(input_custoMedio.value);
+        var estacao = input_estacao.value;
+        var regiao = input_regiao.value;
+        var nome = input_nomeCalculadora.value;
+        var divSome = "";
+
+        var umidade = 0;
+
+        var valorTotal = quantidadeobras * custoMedio;
+        var valorPerdido = (valorTotal * 0.40);
+
+        if (regiao == "centro-oeste") {
+            if (estacao == "verão") {
+                umidade = 56;
+            }
+            if (estacao == "outono") {
+                umidade = 75;
+                valorPerdido = valorPerdido + 350;
+            }
+            if (estacao == "inverno") {
+                umidade = 61;
+            }
+            if (estacao == "primavera") {
+                umidade = 67.5;
+            }
+        }
+
+
+        if (regiao == "norte") {
+
+            if (estacao == "verão") {
+                umidade = 72.5;
+                valorPerdido = valorPerdido + 300;
+            }
+            if (estacao == "outono") {
+                umidade = 69.25;
+            }
+            if (estacao == "inverno") {
+                umidade = 51.75;
+            }
+            if (estacao == "primavera") {
+                umidade = 66.5;
+            }
+        }
+
+
+        if (regiao == "sudeste") {
+
+            if (estacao == "verão") {
+                umidade = 70;
+                valorPerdido = valorPerdido + 300;
+            }
+            if (estacao == "outono") {
+                umidade = 68;
+            }
+            if (estacao == "inverno") {
+                umidade = 58.75;
+            }
+            if (estacao == "primavera") {
+                umidade = 66.25;
+            }
+        }
+
+
+        if (regiao == "sul") {
+
+            if (estacao == "verão") {
+                umidade = 77.7;
+                valorPerdido = valorPerdido + 370;
+            }
+            if (estacao == "outono") {
+                umidade = 75;
+                valorPerdido = valorPerdido + 350;
+            }
+            if (estacao == "inverno") {
+                umidade = 74.25;
+                valorPerdido = valorPerdido + 340;
+            }
+            if (estacao == "primavera") {
+                umidade = 76;
+                valorPerdido = valorPerdido + 360;
+            }
+        }
+
+
+        if (regiao == "nordeste") {
+
+            if (estacao == "verão") {
+                umidade = 77;
+                valorPerdido = valorPerdido + 370;
+            }
+            if (estacao == "outono") {
+                umidade = 76;
+                valorPerdido = valorPerdido + 360;
+            }
+            if (estacao == "inverno") {
+                umidade = 65;
+            }
+            if (estacao == "primavera") {
+                umidade = 61;
+            }
+        }
+
+
+
+        div_msg.innerHTML = `<div class="TextoResposta"> Olá ${nome}! Na região ${regiao} durante a estação ${estacao} a porcentagem média de umidade é ${umidade}%</div> `
+        div_msg.innerHTML += `  <div class="TextoResposta">   Nessas condições você pode ter um prejuízo estimado de R$${valorPerdido}<br> Com nosso sistema você pode reduzir esse prejúizo em até 40% </div> <button onclick="Voltar()">Fazer outro Calculo</button>`;
+        div_msg.style.display = "flex";
+        cardcalc.style.display = "none";
+
+
+    }
+    function Voltar() {
+        div_msg.style.display = "none";
+        cardcalc.style.display = "flex";
+    }
+</script>

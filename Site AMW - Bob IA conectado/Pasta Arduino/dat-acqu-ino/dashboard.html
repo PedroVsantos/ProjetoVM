@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
+</head>
+
+<body>
+
+
+    <div class="navBar">
+        <div>
+            <img style="height: 75px;" src="./imagens/Logo.png">
+        </div>
+        <h1 class="subtitulo">Dashboard</h1>
+        <p onclick="logout()" class="logout"><b>LOG OUT</b></p>
+    </div>
+
+    <div class="Conteudo">
+
+        <div class="imagem01">
+            <div class="painel">
+                <h1 style="color: white; margin-top: 120px;" class="subtitulo">Painel de Gerenciamento de Umidade</h1>
+                <div class="quadrado">
+                    <div class="quadradoNormalizado">Seções Normalizadas
+                        <div class="numAlertas">2</div>
+                    </div>
+                    <div class="quadradoAlerta">Seções Sob Risco
+                        <div class="numeroAlerta">2</div>
+                    </div>
+                    <div class="quadradoSobcontrole">Seções em Alerta
+                        <div class="numAlertas">2</div>
+                    </div>
+                </div>
+            </div>
+            <center class="centroDash">
+
+                <div class="meioDash">
+                    <div class="grafico">
+                        <div style="position: relative; height:100vh; width:100vw">
+                            <h4 style="color: white;" class="titulo1">Umidade Semanal</h4>
+                            <canvas id="myChart" class="graficoFundo"></canvas>
+                        </div>
+                    </div>
+                    <!-- <div>
+           <canvas id="myChart1" class="graficoFundo"></canvas>
+       </div> -->
+                    <div class="locaisMuseu">
+                        <h4 class="TituloLocaisMuseu">Locais do Museu</h4>
+                        <div class="locais">
+                            <h4>Museu 1 - Seção 1
+                                <div class="circulos" style="background-color: #FF0000;"></div>
+                            </h4>
+                            <h4>Museu 1 - Seção 2
+                                <div class="circulos" style="background-color: #05FF00;"></div>
+                            </h4>
+                            <h4>Museu 1 - Seção 3
+                                <div class="circulos" style="background-color: #FFB800;"></div>
+                            </h4>
+                            <h4>Museu 1 - Seção 4
+                                <div class="circulos" style="background-color: #05FF00;"></div>
+                            </h4>
+                            <h4>Museu 1 - Seção 5
+                                <div class="circulos" style="background-color: #FF0000;"></div>
+                            </h4>
+                            <h4>Museu 1 - Seção 6
+                                <div class="circulos" style="background-color: #FF0000;"></div>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="MinMax">
+                        <div class="MaximaMin">
+                            <h4>Umidade Máxima</h4>
+                            <h5 class="numeroAlerta">22</h5>
+                        </div>
+                        <div class="MaximaMin">
+                            <h4>Umidade Mínima</h4>
+                            <h5 class="numeroAlerta">18</h5>
+                        </div>
+                    </div>
+                </div>
+            </center>
+            <center>
+                <div style=" height:60pz; width:60vw">
+                    <h1 style="color: white; margin: 10px;" class="titulo1">Controle de Umidade em tempo real</h1>
+                    <canvas id="dht11Umidade" class="graficoFundo"></canvas>
+                </div>
+            </center>
+        </div>
+
+        <footer>
+            <div class="divFooter">
+                <div class="divCard1">
+                    <div>
+                        <img style="height: 50px;" src="./imagens/Logo png.png">
+                    </div>
+                    <h1>AMW</h1>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
+<script style="width: 40px; height: 40px;">
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+            datasets: [
+                {
+                    label: 'Umidade Média',
+                    backgroundColor: 'rgb(50.2, 0, 0)',
+                    borderColor: 'rgb(50.2, 0, 0)',
+                    data: [80, 90, 82, 90, 85, 90, 92, 100],
+                    borderWidth: 1
+                }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
+    contextoDht11Umidade.canvas.width = 1000;
+    contextoDht11Umidade.canvas.height = 300;
+    var dht11Umidade = new Chart(
+        contextoDht11Umidade,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Umidade',
+                    type: 'line',
+                    borderColor: ['rgb(50.2, 0, 0)'],
+            backgroundColor: ['rgb(50.2, 0, 0)']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0
+                }
+            }
+        }
+    );
+
+    var paginacao = {};
+    var tempo = {};
+    function obterDados(grafico, endpoint) {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+        http.send(null);
+        var valores = JSON.parse(http.responseText);
+        if (paginacao[endpoint] == null) {
+            paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+            tempo[endpoint] = 0;
+        }
+        // Exibir à partir do último elemento exibido anteriormente
+        var ultimaPaginacao = paginacao[endpoint];
+        paginacao[endpoint] = valores.length;
+        var valores = valores.slice(ultimaPaginacao);
+        valores.forEach((valor) => {
+            //Máximo de 60 itens exibidos no gráfico
+            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                grafico.data.labels.shift();
+                grafico.data.datasets[0].data.shift();
+            }
+
+            grafico.data.labels.push(tempo[endpoint]++);
+            grafico.data.datasets[0].data.push(parseFloat(valor));
+            grafico.update();
+        })
+    }
+
+    setInterval(() => {
+        obterDados(dht11Umidade, 'dht11/umidade');
+        obterDados(dht11Temperatura, 'dht11/temperatura');
+        obterDados(luminosidade, 'luminosidade');
+        obterDados(lm35Temperatura, 'lm35/temperatura');
+        obterDados(chave, 'chave');
+    }, 1000);
+
+
+</script>

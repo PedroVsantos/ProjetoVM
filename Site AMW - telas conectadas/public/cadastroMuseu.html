@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="css/stylePiLC.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="Js/JavaScriptDoSI.js"> -->
+</head>
+
+<body>
+    <div id="div_filho2" class="imgagemBackGro">
+        <div class="ConteinerTotal">
+            <img class="imglogo" src="assets/imgs/imgLogo.png" alt="">
+            <H1 class="titulo">CADASTRO MUSEU</H1>
+            <div class="dibInput">
+                <input id="ipt_nomeM" type="text" placeholder="Nome Museu">
+                <input id="ipt_cep" type="text" placeholder="Cep">
+                <input id="ipt_num" type="text" placeholder="Número">
+                <input id="ipt_complemento" type="text" placeholder="Complemento">
+                <input id="ipt_cnpj" type="text" placeholder="CNPJ">
+                <input id="ipt_qtdSecao" type="text" placeholder="Quantidade de Seções do Museu">
+            </div>
+            <div class="div_botton">
+                <button onclick="voltar()" class="botton_v">Voltar</button>
+                <button onclick="cadastrar()" class="botton">Continuar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+
+        var nomeMuseuVar = ipt_nomeM.value;
+        var cepVar = ipt_cep.value;
+        var numeroVar = ipt_num.value;
+        var complementoVar = ipt_complemento.value;
+        var cnpjVar = ipt_cnpj.value;
+        var qtdSecaoVar = ipt_qtdSecao.value;
+
+
+        if (
+            nomeMuseuVar == "" ||
+            cepVar == "" ||
+            numeroVar == "" ||
+            complementoVar == "" || cnpjVar == "" || qtdSecaoVar == ""
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "(Mensagem de erro para todos os campos em branco)";
+
+            //   finalizarAguardar();
+            return false;
+        } else {
+            fetch("/museus/rr", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeMuseuServer: nomeMuseuVar,
+                    cepServer: cepVar,
+                    numeroServer: numeroVar,
+                    complementoServer: complementoVar,
+                    cnpjServer: cnpjVar,
+                    qtdSecaoServer: qtdSecaoVar
+                }),
+            })
+
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+
+
+                        setTimeout(() => {
+                            window.location.href = ("cadastro.html")
+                        }, "2000");
+
+                        //   limparFormulario();
+                        //   finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    // finalizarAguardar();
+                });
+
+            return false;
+
+        }
+    }
+    function voltar() {
+        window.location.href = ("index.html")
+    }
+</script>

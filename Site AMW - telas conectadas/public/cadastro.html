@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMW</title>
+  <link rel="stylesheet" href="css/stylePiLC.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="Js/JavaScriptDoSI.js"> -->
+</head>
+
+<body onload="listar()">
+  <div id="div_pai" class="imgagemBackGro">
+    <div class="ConteinerTotal">
+      <img class="imglogo" src="assets/imgs/imgLogo.png" alt="">
+      <H1 class="titulo">CADASTRO</H1>
+      <div class="dibInput">
+        <select name="museus" id="listaMuseus">
+          <option selected value="#">Selecione um Museu ou Galeria</option>
+        </select>
+        <input id="nome_input" type="text" placeholder="Nome">
+        <input id="cpf_input" type="text" placeholder="CPF">
+        <input id="email_input" type="text" placeholder="Email">
+        <input id="senha_input" type="password" placeholder="Senha">
+        <input id="confirmacao_senha_input" type="password" placeholder="Confirmar senha">
+      </div>
+      <div class="div_botton">
+        <button onclick="voltarI()" class="botton_v">Voltar</button>
+        <button onclick="cadastrar()" class="botton">Finalizar</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  function voltarI() {
+    window.location.href = ("./cadastroMuseu.html")
+  }
+
+  function proximo() {
+    window.location.href = ("./dahsboard.html")
+  }
+
+  function cadastrar() {
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var cpfVar = cpf_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var fkMuseuVar = listaMuseus.value;
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" || fkMuseuVar == "#" || cpfVar == ""
+    ) {
+    
+      return false;
+    } else {
+
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          fkMuseuServer: fkMuseuVar,
+          cpfServer: cpfVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+        
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+
+      return false;
+    }
+
+    // Enviando o valor da nova input
+
+  }
+
+  function listar() {
+    fetch("/museus/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((museus) => {
+          museus.forEach((museu) => {
+            listaMuseus.innerHTML += `<option value='${museu.idMuseu}'>${museu.nomeMuseu}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+</script>

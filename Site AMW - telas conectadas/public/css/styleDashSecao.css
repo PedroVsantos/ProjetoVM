@@ -1,0 +1,267 @@
+/* ---------------GLOBAL------------------*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* background-color: #F7E5CF; */
+    /* background-color: #0044ff;  */
+    background-image: url(Museu\ Fundo.jpg);
+    background-image: url(../assets/imgs/Museu\ Fundo.jpg);
+
+    width: 100%;
+    height: 1000px;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.DivGeralgraficos{
+    background-color: #FFFFFF; 
+    border-radius: 20px;
+    height: 400px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+
+.graficoFundo{
+    background-color: #FFFFFF; 
+    border-radius: 20px;
+}
+
+
+.divDeLadinho{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+/*_________________GLOBAL________________*/
+
+/* ---------------FONTES-----------------*/
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/*_________________FONTES________________*/
+
+
+/* ---------------NAVBAR-----------------*/
+.ulNavBarPrincipal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Montserrat";
+    background-color: #D1B898;
+    border: none;
+}
+
+.ulNavBarPrincipal .divNavBar {
+    font-family: "Montserrat";
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+}
+
+.ulNavBarPrincipal .divImgLogo img {
+    height: 60px;
+
+}
+
+.ulNavBarPrincipal .divBotao .ulBotao li {
+    float: left;
+    list-style-type: none;
+}
+
+.ulNavBarPrincipal .divBotao .ulBotao li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.ulNavBarPrincipal .divBotao .ulBotao li a:hover {
+    background-color: #ddd;
+}
+
+
+/*_________________NAVBAR_______________*/
+
+
+/*------------------------NavBartexte------------------------*/
+
+
+/*_________________________NavBar______________________________*/
+
+
+/*------------------------1Parte-Do-Site-----------------------------*/
+.masterVisualGeral{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.divPainelUmidade{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.divVisualGeral {
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    width: 50vw;
+}
+
+.divVisualGeral h4 {
+    font-family: sans-serif;
+    
+}
+
+.divVisualGeral p {
+    font-family: sans-serif;
+}
+
+.divSecoes {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 340px;
+    height: 130px;
+    background-color: #D1B898;
+    border-radius: 20px;
+    justify-content: center;
+    color: #43020B;
+}
+
+.divSecoes p{
+font-size: 16px;
+}
+.divSecoes h4{
+    font-size: 20px;
+    }
+    
+
+
+.divAdicionarFundo{
+    display: flex;
+    justify-content: center;
+}
+
+.divAdicionarSecao{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 500px;
+    height: 100px;
+    background-color: #00000050;
+    border-color: #FFFFFF;
+    border-radius: 5px;
+    align-items: center;
+    flex-direction: row;    
+}
+
+.divAdicionarSecao .inputSecao{
+    width: 250px;
+    height: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: #000000;
+    
+}
+
+.divAdicionarSecao h4{
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+.divAdicionarSecao .botaoAdicionar{
+    width: 80px;
+    height: 20px;
+    background-color: #F3E0C7;
+    margin-top: 20px;
+    /* border: #000000; */
+}
+/*_________________________1Parte-Do-Site______________________________*/
+
+/*------------------------FOOTER------------------------*/
+.divFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: #D1B898;
+    width: 100%;
+    bottom: 0%;
+    left: 0%;
+}
+
+.divCard1 {
+    display: flex;
+    border-right: solid 2px #43020B;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.divCard2 {
+    display: flex;
+    border-right: solid 2px #43020B;
+    flex-direction: row;
+    width: 30%;
+    height: 160px;
+    font-family: "Montserrat";
+    justify-content: center;
+    align-items: center;
+}
+
+.divCard2Aux {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 10px;
+}
+
+.divCard3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 10px;
+    width: 30%;
+    align-content: start;
+
+}
+
+.imgLogoFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/*_________________________FOOTER______________________________*/

@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F7E5CF;
+}
+
+
+/*------------------------NavBar------------------------*/
+
+.ulHeader {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Montserrat";
+    background-color: #D1B898;
+    border: none;
+}
+
+.ulHeader .divHeader {
+    font-family: "Montserrat";
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+}
+
+.ulHeader .imgLogo img {
+    height: 40px;
+}
+
+.ulHeader .divBotoes .ulHeader li {
+    float: left;
+}
+
+.ulHeader .divBotoes .ulHeader li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.ulHeader .divBotoes .ulHeader li a:hover {
+    background-color: #ddd;
+}
+
+.svgPerfil{
+    display: flex;
+    width: 60px;
+    fill: #000000;
+    color: #000000;
+    align-items: center;
+    justify-content: center;
+}
+
+/*_________________________NavBar______________________________*/
+
+/*------------------------AMW-PRINCIPAL------------------------*/
+
+.divAMWPrincipal {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-family: "Montserrat";
+    font-size: 96px;
+    font-weight: 400;
+    color: #FFFF;
+    background-image: url(../assets/imgs/imgAMWLogo.jpg);
+    background-size: cover;
+    height: 600px;
+}
+
+
+/*_______________________AMW-PRINCIPAL____________________________*/
+/*------------------------Sobre-Nos-------------------------------*/
+
+.divSobreNos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10%;
+    gap: 10%;
+}
+
+.divTextoSobreNos {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 45%;
+    padding: 20px;
+    text-align: center;
+}
+
+.divTextoSobreNos h1 {
+    margin-bottom: 10px;
+    margin-bottom: 8%;
+    font-size: 48px;
+    color: #43020B;
+    font-family: "Montserrat";
+    font-weight: bold;
+    text-align: left;
+}
+
+.divTextoSobreNos p {
+    margin-bottom: 40px;
+    color: #000000;
+    font-family: "Montserrat";
+    text-align: left;
+    font-size: 24px;
+}
+
+.divImgSobreNos {
+    max-width: 100%;
+}
+
+.divImgSobreNos img {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 400px;
+    height: auto;
+}
+
+/*_________________________Sobre-Nos___________________________________*/
+
+/*------------------------Imagem-No-Meio-------------------------------*/
+
+.divUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../assets/imgs/imgUpImageSolucao.jpg);
+    color: #F7E5CF;
+    height: 232px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divUp h2 {
+    font-size: 40px;
+}
+
+
+/*________________________Imagem-No-Meio_______________________________*/
+
+/*-----------------------------Solução-------------------------------*/
+
+.divSolucao {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+}
+
+.divSolucao h1 {
+    font-weight: bold;
+    font-size: 52px;
+    margin-bottom: 4%;
+    color: #43020B;
+    font-family: "Montserrat";
+}
+
+.divSolucao p {
+    font-size: 32px;
+    margin-left: 16%;
+    margin-right: 16%;
+    color: #000000;
+    font-family: "Montserrat";
+    margin-bottom: 8%;
+}
+
+
+/*_________________________Solução_____________________________*/
+
+/*------------------------Fale-Conosco-------------------------------*/
+
+.divFaleConosco{
+    display: flex;
+    background-image: url(../assets/imgs/FundoContato.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 612px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 15%;
+    margin-top: 5%;
+    
+}
+
+.divFCQuadradoMarron{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+    height: 500px;
+    border-radius: 16px;
+    border: solid 2px #540510;
+    background-color: #b0926b89;
+}
+
+.divFaleConosco h1{
+    font-size: 56px;
+    font-weight: bold;
+    color: #43020B;
+    font-family: "Montserrat";
+}
+
+.divFCQuadradoMarron input{
+    display: flex;
+    border: #540510 1px solid;
+    background-color: #F7F2E1;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 50px;
+    border-radius: 20px;
+    width: 650px;
+    margin: 1%;
+}
+
+.divFCQuadradoMarron textarea{
+    background-color: #F7F2E1;
+    border: #540510 1px solid;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 50px;
+    border-radius: 20px;
+    margin-top: 8px;
+    color: black;
+    font-weight: bold;
+    width: 650px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.divFCQuadradoMarron button{
+    background-color:#540510;
+    border: #540510 1px solid;
+    padding: 20px;
+    border-radius: 20px;
+    width: 150px;
+    color: #F7F2E1;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+/*_________________________Fale-Conosco______________________________*/
+
+/*------------------------Simulador Financeiro-----------------------*/
+
+.divFundoCalculadora {
+    background-image: url(../assets/imgs/museu3.png);
+    background-position: center;
+    background-size: cover;
+    height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .divFundoCalculadoraAux {
+    background-color: #00000087;
+    height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.divCalculadorPrincipal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divTextoSM{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    padding: 20px;
+    text-align: center;
+}
+
+.divTextoSM h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    font-size: 40px;
+    font-weight: bold;
+    color: #F7E5CF;
+    font-family: "Montserrat";
+    text-align: left;
+    margin-bottom: 8%;
+
+}
+
+.divTextoSM p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    font-size: 24px;
+    margin-left: 16%;
+    margin-right: 16%;
+    color: #F7E5CF;
+    font-family: "Montserrat";
+    margin-bottom: 8%;
+    text-align: left;
+}
+
+.cardcalc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #D1B898;
+    border-radius: 16px;
+    width: 90%;
+}
+
+.imglogoSM{
+    margin-top: 8%;
+    margin-bottom: 4%;
+    display: flex;
+    width: 80px;
+}
+
+.cardcalc input{
+    display: flex;
+    border: #540510 1px solid;
+    background-color: #F7F2E1;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 50px;
+    border-radius: 20px;
+    width: 80%;
+    margin: 1%;
+}
+
+.cardcalc select{
+    display: flex;
+    border: #540510 1px solid;
+    background-color: #F7F2E1;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 50px;
+    border-radius: 20px;
+    width: 80%;
+    margin: 1%;
+}
+
+.cardcalc button{
+    background-color:#540510;
+    border: #540510 1px solid;
+    padding: 20px;
+    border-radius: 20px;
+    width: 150px;
+    color: #F7F2E1;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 8%;
+
+}
+
+.DivSelectCal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+.DivInputCal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 83%;
+    margin-bottom: 1%;
+}
+
+input::placeholder {
+    color: rgb(0, 0, 0);
+  }
+
+
+#divSome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#div_msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #D1B898;
+    border-radius: 16px;
+    width: 90%;
+    color: #000000;
+    font-family: "Montserrat";
+    margin-bottom: 8%;
+    text-align: left;
+    width: 50%;
+    font-size: 24px;
+}
+
+
+#div_msg button {
+    display: flex;
+    background-color:#540510;
+    border: #540510 1px solid;
+    padding: 20px;
+    border-radius: 20px;
+    width: 150px;
+    color: #F7F2E1;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 8%;
+}
+
+.TextoResposta{
+    display: flex;
+    margin-top: 2%;
+    font-size: 24px;
+    margin-left: 16%;
+    margin-right: 16%;
+    color: #000000;
+    font-family: "Montserrat";
+    margin-bottom: 8%;
+    margin: 6%;
+    text-align: left;
+}
+
+
+/*_________________________Simulador Financeiro______________________*/
+
+/*------------------------Footer-----------------------*/
+.divFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: #D1B898;
+}
+
+.divCard1{
+    display: flex;
+    border-right: solid 2px #43020B;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30% ;
+}
+
+.divCard2{
+    display: flex;
+    border-right: solid 2px #43020B;
+    flex-direction: row;
+    width: 30% ;
+    height: 160px;
+    font-family: "Montserrat";
+    justify-content: center;
+    align-items: center;
+}
+
+.divCard2Aux {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 10px;
+}
+
+.divCard3{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 10px;
+    width: 30% ;
+    align-content: start;
+    
+}
+
+.imgLogoFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+/*_________________________Footer______________________*/
+

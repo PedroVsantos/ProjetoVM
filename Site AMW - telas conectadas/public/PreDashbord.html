@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="../public/css/styleND.css">
+</head>
+<body>
+  <ul class="ulNavBarPrincipal">
+    <div class="divNavBar">
+        <div class="divImgLogo">
+            <!-- <li><img src="../imgs/imgLogo.png" ></li> -->
+            <li><img src="../public/assets/imgs/imgLogo.png" ></li>
+        </div>
+        <div class="divBotao">
+            <ul class="ulBotao">
+                <li><a href="DashbordSeções.html">Seções</a></li>
+                <li><a href="indexSiteP.html">Sair</a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+  </ul>
+
+   <div class="divFundoImagem">
+    <div class="divPainelUmidade">
+    <h1>Painel de Gerenciamento de Umidade</h1>
+    </div>
+  <div class="divVisualGeral">
+    <div class="divSeçaoNormal">
+        <h4>Seção Normalizada</h4>
+        <p>1</p>
+    </div>
+    <div class="divSeçaoRisco">
+        <h2>Seção Sob Risco</h2>
+        <p>2</p>
+    </div>
+    <div class="divSeçaoAlerta">
+        <h4>Seção em Alerta</h4>
+        <p>2</p>
+    </div>
+  </div>
+  
+    <div class="divAdicionarFundo">
+    <div class="divAdicionarSecao">
+    <h4>Adicionar Seção:</h4>
+    <input id="input_adicionar" type="text" class="inputSecao">
+    <button onclick="adicionar()" class="botaoAdicionar">Adicionar</button>
+    </div>
+    </div>
+
+    <div class="divSecaoAdicional">
+        <div class="divSecao1">
+            Museu 1 - Seção 1
+            <!-- <img class="divImagem1" src="Museu seção 1.jpg" > -->
+        </div>
+
+        <div class="divSecao2">Museu 1 - Seção 2</div>
+    </div>
+
+    <div class="divSecaoAdicional">
+        <div class="divSecao3">Museu 1 - Seção 3</div>
+        <div class="divSecao4">Museu 1 - Seção 4</div>
+    </div>
+
+    </div>
+  
+  <footer>
+    <div class="divFooter">
+        <div class="divCard1">
+            <!-- <img class="imgLogoFooter" src="imgLogo.png" > -->
+            <img class="imgLogoFooter" src="../public/assets/imgs/imgLogo.png" >
+            <h1>AMW</h1>
+        </div>
+        <div class="divCard2">
+            <div class="divCard2Aux">
+                <h2><a href="https://amwsptech.atlassian.net/servicedesk/customer/portal/1">CHAMADOS</a></h2><br>
+                <H2><a href="DashbordSeções.html">SEÇÕES</a></H2><br>
+                <H2><a href="indexSiteP.html">SAIR</a></H2>
+            </div>
+        </div>
+        <div class="divCard3">
+            <h2>Contato</h2>
+            <h3>(+55 11)46309050</h3>
+            <h2>E-mail</h2>
+            <h3>amw.sprint2@sptech.school</h3>
+            <h2>Endereço</h2>
+            <h3>Rua Haddock Lobo, 595 - São Paulo - SP, 01414-001</h3>
+        </div>
+    </div>
+    <!-- <div class="divFooter">
+        <div class="divCard1">
+            <img class="imgLogoFooter" src="/site-institucional-AMW/imgs/imgLogo.png" alt="">
+            <h1>AMW</h1>
+        </div>
+        <div class="divCard2">
+            <div class="divCard2Aux">
+                <h2><a href="#SobreNos">SEÇÃO</a></h2><br> -->
+                <!-- <H2><a href="#Solucao">SOLUÇÃO</a></H2> -->
+            <!-- </div> -->
+            <!-- <div class="divCard2Aux">
+                <h2><a href="#FaleConosco">CALCULADORA</a></h2><br>
+                <H2><a href="#Caculadora">FALE CONOSCO</a></H2>
+            </div> -->
+        <!-- </div>
+        <div class="divCard3">
+            <h2>Contato</h2>
+            <h3>(+55 11)46309050</h3>
+            <h2>E-mail</h2>
+            <h3>amw.sprint2@sptech.school</h3>
+            <h2>Endereço</h2>
+            <h3>Rua Haddock Lobo, 595 - São Paulo - SP, 01414-001</h3>
+        </div>
+    </div> -->
+</footer>
+
+</body>
+</html>
+    <script style="width: 40px; height: 40px;">
+    const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['1', '2', '3', '4', '5', '6', '7'],
+        datasets: [
+        {
+            label: 'Umidade Média',
+            backgroundColor: 'rgb(50.2, 0, 0)',
+            borderColor: 'rgb(50.2, 0, 0)',
+            data: [80, 90, 82, 90, 85, 90,92,100],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+
+<!--
+
+-->

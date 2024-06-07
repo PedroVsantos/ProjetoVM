@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BobIA</title>
+    <link rel="stylesheet" href="telaN3.css">
+</head>
+<!-- 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="telaN3.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head> -->
+
+<body>
+    <ul class="ulNavBarPrincipal">
+        <div class="divNavBar">
+            <div class="divImgLogo">
+                <li><img src="img/imgSF.png"></li>
+            </div>
+            <div class="divBotao">
+                <ul class="ulBotao">
+                    <li><a href="https://amwsptech.atlassian.net/servicedesk/customer/portal/1">CHAMADOS</a></li>
+                    <li><a href="http://localhost:3333/DashbordSe%C3%A7%C3%B5es.html">SEÇÕES</a></li>
+                    <li><a href="http://localhost:3333/index.html">SAIR</a></li>
+                </ul>
+    </ul>
+    </div>
+    </div>
+    </ul>
+    <div class="divPainelUmidade">
+        <h1>CHAMADOS</h1>
+    </div>
+
+    <div class="masterVisualGeral">
+
+        <div class="divVisualGeral">
+            <div class="divSecao2">
+                <div class="titulo conteudoBob">
+                    <p>BOB IA </p>
+                </div>
+
+                <div class="conteudoPergunta">
+                    <p>Digite sua pergunta:</p>
+                    <!-- <div class="perguntaBob"> -->
+                        <textarea  class="perguntaBob" id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+                    <!-- </div> -->
+                </div>
+                <!-- <hr> -->
+
+                <button onclick="gerarResposta()">Gerar Resposta</button>
+
+                <div class="textoChamado conteudoResposta">
+                    <p>Resposta</p>
+                    <div id="resposta" class="repostaBob">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+<!--     
+    <div id="container">
+        <h1>BobIA</h1>
+        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+        <br><br>
+        <button onclick="gerarResposta()">Gerar Resposta</button>
+        <h3>Resposta da IA:</h3>
+        <div id="resposta"></div>
+    </div> -->
+
+     <footer>
+        <div class="divFooter">
+            <div class="divCard1">
+                <img class="imgLogoFooter" src="imgSF.png" alt="">
+                <h1>AMW</h1>
+            </div>
+            <div class="divCard2">
+
+                <div class="divCard2Aux">
+                    <h2><a href="#">CHAMADOS</a></h2><br>
+                    <H2><a href="#">SEÇÕES</a></H2><br>
+                    <H2><a href="#">SAIR</a></H2>
+                </div>
+            </div>
+            <div class="divCard3">
+                <h2>Contato</h2>
+                <h3>(+55 11)46309050</h3>
+                <h2>E-mail</h2>
+                <h3>amw.sprint2@sptech.school</h3>
+                <h2>Endereço</h2>
+                <h3>Rua Haddock Lobo, 595 - São Paulo - SP, 01414-001</h3>
+            </div>
+        </div>
+    </footer> 
+
+</body>
+
+</html>
+<script>
+
+    async function gerarResposta() {
+        const pergunta = document.getElementById('pergunta').value;
+
+        const response = await fetch('/perguntar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pergunta })
+        });
+
+        const data = await response.json();
+
+        resposta.style.display = 'block';
+        document.getElementById('resposta').innerText = data.resultado;
+    }
+
+</script>
+<!--
+
+-->

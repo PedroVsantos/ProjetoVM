@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymTech | Dashboards</title>
+
+
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- <body onload=" atualizarFeed()"> -->
+
+<body>
+
+    <div class="janela">
+        <div class="header-left">
+            <h1 style="color: white;">GymTech</h1>
+
+            <div class="hello">
+                <h3 style="color: white;">Olá, <span style="color: white;" id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./cards.html">
+                    <h3>Aquários</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+
+                <h3>Gráficos</h3>
+
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avisos</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+        </div>
+
+        <div class="dash">
+            <div class="tituloGrafico">
+                <h1 class="tituloGrafico">Olá, seja bem vindo a seção de Gráficos</h1>
+            </div>
+            <div class="divDash">
+                <canvas id="myChartCanvas"></canvas>
+                <span class="textoGrafico">O principal objetivo deste gráfico é fornecer uma representação clara e
+                    concisa das preferências de treino dos usuários. Com ele, é possível identificar quais tipos de
+                    treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões
+                    estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização
+                    de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
+                <div id="alerta"></div>
+
+                <canvas class="canvas2" id="myChartCanvas2"></canvas>
+                <span class="textoGrafico">O principal objetivo deste gráfico é fornecer uma representação clara e
+                    concisa das preferências de treino dos usuários. Com ele, é possível identificar quais tipos de
+                    treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões
+                    estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização
+                    de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
+                <div id="alerta"></div>
+
+
+
+                <div class="btns-dash" id="btnAquario">
+                    <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+                </div>
+                <div id="graficos">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    let myChart;
+    
+    let proximaAtualizacao;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    obterDadosGrafico();
+    obterDadosGrafico2();
+
+    function obterDadosGrafico() {
+
+        fetch(`/medidas/ultimas/:idAquario`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosGrafico2() {
+
+        fetch(`/medidas/ultimas2/:idAquario`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico2(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico
+        let labels = [];
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Quantidade de usuários',
+                data: [],
+                fill: true,
+                borderWidth: 2,
+                borderColor: 'white',
+                // backgroundColor: ['rgba(255,0,0,0.7)', 'green', '#32b9cd', 'purple', 'yellow']
+                backgroundColor: 'rgb(50,185,205, 0.8)'
+            }]
+        };
+
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico   
+        for (const registro of resposta) {
+            labels.push(registro.nome);
+            dados.datasets[0].data.push(registro.quantidade);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff', // Altera a cor da fonte das legendas
+                            font: {
+                                size: 22
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#ffffff',
+                            font: {
+                                size: 22
+                            } // Altera a cor da fonte dos rótulos do eixo Y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#ffffff',
+                            font: {
+                                size: 22
+                            } // Altera a cor da fonte dos rótulos do eixo X
+                        }
+                    },
+                }
+            }
+        };
+
+
+        // Adicionando gráfico criado em div na tela
+        myChart = new Chart(
+            document.getElementById(`myChartCanvas`),
+            config
+        );
+
+        // setInterval(() => atualizarGrafico(dados2, myChart2), 2000);
+    }
+
+    function plotarGrafico2(resposta) {
+
+console.log('iniciando plotagem do gráfico...');
+
+// Criando estrutura para plotar gráfico
+let labels2 = [];
+
+ let dados2 = {
+    labels: labels2,
+    datasets: [{
+        label: 'Quantidade de usuários',
+        data: [],
+        fill: true,
+        borderWidth: 2,
+        borderColor: 'white',
+        // backgroundColor: ['rgba(255,0,0,0.7)', 'green', '#32b9cd', 'purple', 'yellow']
+        backgroundColor: 'rgb(50,185,205, 0.8)'
+    }]
+};
+
+console.log('----------------------------------------------')
+console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+console.log(resposta)
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (const registro2 of resposta) {
+    labels2.push(registro2.idade);
+    dados2.datasets[0].data.push(registro2.quantidade_de_usuarios);
+}
+
+console.log('----------------------------------------------')
+console.log('O gráfico será plotado com os respectivos valores:')
+console.log('Labels:')
+console.log(labels2)
+console.log('Dados:')
+console.log(dados2.datasets)
+console.log('----------------------------------------------')
+
+// Criando estrutura para plotar gráfico - config
+const config2 = {
+    type: 'line',
+    data: dados2,
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#ffffff', // Altera a cor da fonte das legendas
+                    font: {
+                        size: 22
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                ticks: {
+                    color: '#ffffff',
+                    font: {
+                        size: 22
+                    } // Altera a cor da fonte dos rótulos do eixo Y
+                }
+            },
+            x: {
+                
+                ticks: {
+                    color: '#ffffff',
+                    font: {
+                        size: 22
+                    } // Altera a cor da fonte dos rótulos do eixo X
+                }
+            },
+        }
+    }
+};
+
+
+// Adicionando gráfico criado em div na tela
+const myChart2 = new Chart(
+    document.getElementById(`myChartCanvas2`),
+    config2
+);
+
+// setInterval(() => atualizarGrafico(dados2, myChart2), 2000);
+}
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(dados, myChart) {
+
+        // let dados;
+
+        fetch(`/medidas/ultimas/:idAquario`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // obterdados();
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    // let avisoCaptura = document.getElementById(`avisoCaptura`)
+                    // avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        // console.log("---------------------------------------------------------------")
+                        // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        // console.log("Horário do novo dado capturado:")
+                        // console.log(novoRegistro[0].momento_grafico)
+                        // console.log("Horário do último dado capturado:")
+                        // console.log(dados.labels[dados.labels.length - 1])
+                        // console.log("---------------------------------------------------------------")
+                    } else {
+
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        myChart.update();
+                    }
+
+                    // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+
+                // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function atualizarGrafico2(dados2, myChart2) {
+
+
+
+fetch(`/medidas/ultimas2/:idAquario`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            // obterdados();
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados2);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados2.labels2[dados2.labels2.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].momento_grafico)
+                console.log("Horário do último dado capturado:")
+                console.log(dados2.labels2[dados2.labels2.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+
+                dados2.labels2.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                myChart.update();
+            }
+
+            // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
+        });
+    } else {
+        // console.error('Nenhum dado encontrado ou erro na API');
+
+        // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
+    }
+})
+    .catch(function (error) {
+        // console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+</script>

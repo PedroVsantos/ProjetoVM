@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="css/styleDashSecao.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="iniciarAtualizacao()">
+    <ul class="ulNavBarPrincipal">
+        <div class="divNavBar">
+            <div class="divImgLogo">
+                <li><img src="assets/imgs/imgSF.png" ></li>
+            </div>
+            <div class="divBotao">
+                <ul class="ulBotao">
+                    <li><a href="https://amwsptech.atlassian.net/servicedesk/customer/portal/1">CHAMADOS</a></li>
+                    <li><a href="http://localhost:3334/">Bob IA</a></li>
+                    <li><a href="PreDashbord.html">SAIR</a></li>
+                </ul>
+            </div>
+        </div>
+    </ul>
+    <div class="divPainelUmidade">
+        <h1>DASHBORD - SEÇÃO 01</h1>
+    </div>
+
+    <div class="masterVisualGeral">
+        <div class="divVisualGeral">
+            <div class="divSecoes">
+                <h4>Umidade máxima do dia</h4>
+                <p>30</p>
+            </div>
+            <div class="divSecoes">
+                <h4>Umidade mínima do dia</h4>
+                <p>21</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="divDeLadinho">
+        <div class="divPainelUmidade">
+            <h1> Umidade da Semana</h1>
+            <div class="DivGeralgraficos">
+                <canvas id="countryChart" class="graficoFundo" width="200" height="200"></canvas>
+            </div>
+        </div>
+
+        <div class="divPainelUmidade">
+            <h1>Monitoramento ao vivo</h1>
+            <div class="DivGeralgraficos">
+                <canvas id="countryChart2" class="graficoFundo canva2"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="divFooter">
+            <div class="divCard1">
+                <img class="imgLogoFooter" src="assets/imgs/imgSF.png" alt="">
+                <h1>AMW</h1>
+            </div>
+            <div class="divCard2">
+                <div class="divCard2Aux">
+                    <h2><a href="https://amwsptech.atlassian.net/servicedesk/customer/portal/1">CHAMADOS</a></h2><br>
+                    <h2><a href="#">SEÇÕES</a></h2><br>
+                    <h2><a href="PreDashbord.html">SAIR</a></h2>
+                </div>
+            </div>
+            <div class="divCard3">
+                <h2>Contato</h2>
+                <h3>(+55 11)46309050</h3>
+                <h2>E-mail</h2>
+                <h3>amw.sprint2@sptech.school</h3>
+                <h2>Endereço</h2>
+                <h3>Rua Haddock Lobo, 595 - São Paulo - SP, 01414-001</h3>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let proximaAtualizacao;
+        let chart;
+
+        function iniciarAtualizacao() {
+            obterDadosGrafico();
+            setInterval(obterDadosGrafico, 2000); // Atualiza a cada 2 segundos
+        }
+
+        function obterDadosGrafico() {
+            if (proximaAtualizacao != undefined) {
+                clearTimeout(proximaAtualizacao);
+            }
+
+            fetch(`/medidas/ultimas/:idAquario/`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+                        plotarGrafico(resposta);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+        }
+
+        let lista_dtLogg = [];
+        let lista_umidade = [];
+
+        function plotarGrafico(resposta) {
+            console.log('iniciando plotagem do gráfico...');
+            lista_dtLogg = [];
+            lista_umidade = [];
+
+            for (var index = 0; index < resposta.length; index++) {
+                var registro = resposta[index];
+                lista_dtLogg.push(registro.dtLogg);
+                lista_umidade.push(registro.umidade);
+            }
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            const ctx = document.getElementById('countryChart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: lista_dtLogg,
+                    datasets: [{
+                        label: 'Umidade',
+                        data: lista_umidade,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

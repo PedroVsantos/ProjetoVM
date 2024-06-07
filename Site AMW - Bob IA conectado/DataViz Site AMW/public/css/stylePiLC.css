@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #540510;
+
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../assets/imgs/museu3.png);
+    background-position:center ;
+    background-size: cover;
+    
+}
+
+
+.imglogo{
+    width: 100px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.ConteinerTotal{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(253, 246, 237, 1);
+    padding: 30px 20px;
+    border-radius: 20px;
+    border: 3px solid #540510;
+
+}
+
+.dibInput {
+    width: 80%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
+.dibInput input{
+    width: 100%;
+    height: 45px;
+    border-radius: 25px;
+    border: 2px solid #540510;
+    padding: 20px;
+    margin: 5px 11px;
+    background-color: transparent;
+    background-color: rgba(253, 246, 237, 0.5);
+    margin-bottom: 10px;
+    appearance: none;
+    
+}
+
+
+
+
+.div_botton {
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+
+.div_botton2{
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.div_botton3{
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.botton {
+    
+    border-radius: 25px;
+    width: 55%;
+    height: 45px;
+    background-color: rgba(253, 246, 237, 0.5);
+    border: 2px solid #540510;
+    align-items: center;
+
+}
+
+.botton_v {
+    border-radius: 25px;
+    width: 35%;
+    height: 45px;
+    background-color: rgba(253, 246, 237, 0.5);
+    border: 2px solid #540510;
+    align-items: center;
+
+
+}
+.botton2 {
+    border-radius: 25px;
+    width: 35%;
+    height: 45px;
+    background-color: rgba(253, 246, 237, 0.5);
+    border: 2px solid #540510;
+    align-items: center;
+}

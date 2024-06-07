@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMW</title>
+    <link rel="stylesheet" href="css/stylePiLC.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="Js/JavaScriptDoSI.js"> -->
+</head>
+
+<body>
+    <div id="div_filhoPai" class="imgagemBackGro">
+        <div class="ConteinerTotal">
+            <img class="imglogo" src="assets/imgs/imgLogo.png" alt="">
+            <H1 class="titulo">LOGIN</H1>
+            <div class="dibInput">
+                <input id="email_input" type="text" placeholder="Email">
+                <input id="senha_input" type="password" placeholder="Senha">
+            </div>
+            <div class="div_botton3">
+                <button onclick="entrar() " class="botton2">Continuar</button>
+                <button onclick="Ircadastrar()" class="botton">Cadastre-se</button>
+                <!-- <p class="senha">Esqueceu a Senha?</p> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    // function login() {
+    //     var emailL = ipt_emailL.value;
+    //     var senhaL = ipt_senhaL.value;
+    //     window.location.href = ("dahsboard.html")
+    // }
+    function Ircadastrar() {
+        window.location.href = ("./cadastroMuseu.html")
+    }
+
+
+    function entrar() {
+
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+          alert("erro")
+            return false;
+        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                    sessionStorage.ID_USUARIO = json.id;
+                    setTimeout(function () {
+                        window.location = "./PreDashbord.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>
